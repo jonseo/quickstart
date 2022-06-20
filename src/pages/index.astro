@@ -1,8 +1,55 @@
 ---
-import Layout from '../components/Layout.astro';
+//import Layout from '../components/Layout.astro';
 ---
 
-<Layout title="Astro Quickstart">
+<title>Swipe to Like or Not</title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+	 <script src="lib/ionic/js/ionic.bundle.js"></script>
+<!-- your app's js -->
+    <script src="js/app.js"></script>
+    <!--script src="lib/collide/collide.js"></script-->
+    <script src="lib/ionic-contrib-tinder-cards/ionic.tdcards.js"></script>
+  </head>
+  <body ng-app="starter" no-scroll>
+    
+      <ion-pane ng-controller="CardsCtrl">
+          <ion-header-bar class="bar-assertive">
+              <h1 class="title">Like it or Not?</h1>
+          </ion-header-bar>
+        
+          <td-cards>
+              <td-card id="td-card" ng-repeat="card in cards" 
+              on-transition-left="transitionLeft(card)"
+              on-transition-right="transitionRight(card)"
+              on-transition-out="transitionOut(card)"
+              on-destroy="cardDestroyed($index)"
+              on-swipe-left="cardSwipedLeft($index)" 
+              on-swipe-right="cardSwipedRight($index)"
+              on-partial-swipe="cardPartialSwipe(amt)">
+                  <div class="title">
+                      {{card.title}}
+                  </div>
+                  <div class="image">
+                      <div class="no-text overlayBox"><div class="noBox boxed">NOT</div></div>
+                      <img ng-src="{{card.image}}">
+                      
+                      <div class="yes-text overlayBox"><div class="yesBox boxed" id="centerMe">YES!</div></div>
+                  </div>
+              
+              </td-card>
+          </td-cards>
+          
+          <br/>
+<br/>
+<br/>
+<br/>
+
+      </ion-pane>	    
+</body>
+</html>	
+	<!--Layout title="Astro Quickstart">
 	<main>
       <div class="header">
         <div class="logo">
@@ -32,8 +79,8 @@ import Layout from '../components/Layout.astro';
         Made with <a href="https://ntl.fyi/3P0dwBi"><img src="https://res.cloudinary.com/dzkoxrsdj/image/upload/v1646714899/netliheart_ezlkim.svg" alt="Netlify Logo" /></a> for you!
       </footer>
 	</main>
-</Layout>
-<style>
+</Layout-->
+<!--style>
   html {
 		background-color: unset;
 	}
@@ -72,4 +119,4 @@ import Layout from '../components/Layout.astro';
   footer img {
       width: 20px;
   }
-</style>
+</style-->
